@@ -1,0 +1,13 @@
+package routes
+
+import (
+	"github.com/gin-gonic/gin"
+	"yourapp/handlers"
+)
+
+func Register{{.Name | title}}Routes(r *gin.Engine) {
+	r.POST("/{{.Name}}", handlers.Create{{.Name | title}})
+	r.GET("/{{.Name}}/:id", handlers.Get{{.Name | title}})
+	r.PUT("/{{.Name}}/:id", handlers.Update{{.Name | title}})
+	r.DELETE("/{{.Name}}/:id", handlers.Delete{{.Name | title}})
+}

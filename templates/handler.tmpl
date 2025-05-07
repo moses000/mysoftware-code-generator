@@ -1,0 +1,88 @@
+package handlers
+
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+	"yourapp/models"
+	"yourapp/services"
+	"strconv"
+)
+
+func Create{{.Name | title}}(c *gin.Context) {
+	var req models.{{.Name | title}}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input: " + err.Error()})
+		return
+	}
+
+	if err := req.Validate(); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	created, err := services.Create{{.Name | title}}(&req)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create {{.Name}}"})
+		return
+	}
+
+	c.JSON(http.StatusCreated, created)
+}
+
+func Get{{.Name | title}}(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+
+	result, err := services.Get{{.Name | title}}ByID(id)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, result)
+}
+
+func Update{{.Name | title}}(c *gin.Context) {
+	var req models.{{.Name | title}}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input: " + err.Error()})
+		return
+	}
+
+	if err := req.Validate(); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+
+	updated, err := services.Update{{.Name | title}}(id, &req)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update {{.Name}}"})
+		return
+	}
+
+	c.JSON(http.StatusOK, updated)
+}
+
+func Delete{{.Name | title}}(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+
+	if err := services.Delete{{.Name | title}}(id); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete {{.Name}}"})
+		return
+	}
+
+	c.JSON(http.StatusNoContent, nil)
+}

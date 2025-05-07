@@ -1,0 +1,27 @@
+database:
+  host: "localhost"
+  port: 5432
+  user: "yourusername"
+  password: "yourpassword"
+  dbname: "yourdb"
+  sslmode: "disable"
+
+app:
+  name: "CRUD Generator"
+  environment: "development"
+  log_level: "info"
+
+server:
+  port: 8080
+  timeout: 30
+
+api:
+  base_url: "http://localhost:8080/api"
+
+crud_template:
+  model_template: "templates/model.tmpl"
+  handler_template: "templates/handler.tmpl"
+  routes_template: "templates/routes.tmpl"
+  services_template: "templates/services.tmpl"
+  dto_template: "templates/dto.tmpl"
+  output_dir: "output"

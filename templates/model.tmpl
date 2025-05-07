@@ -1,0 +1,24 @@
+package models
+
+import (
+	"time"
+)
+
+type {{.Name | title}} struct {
+{{- range .Columns }}
+	{{ .Name | title }} {{ .Type }} ` + "`json:\"{{ .Name }}\"`" + `
+{{- end }}
+}
+
+func ({{.Name | title}}) Validate() error {
+	// Add validation rules here
+	// Example: Required fields check
+	{{- range .Columns }}
+	{{ if eq .Type "string" }}
+		if {{.Name | title}} == "" {
+			return fmt.Errorf("{{.Name}} is required")
+		}
+	{{- end }}
+	{{ end }}
+	return nil
+}
