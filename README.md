@@ -1,4 +1,4 @@
-# CRUDGen - PostgreSQL CRUD API Generator
+# Code-generator - PostgreSQL CRUD API Generator
 
 💬 Join the Community Discussion
 🚀 I am building code-generator to simplify CRUD code generation from PostgreSQL tables using Go — and I want your input! This is the start of the project, I will ensure to keep increasing it capability and functionality. 
