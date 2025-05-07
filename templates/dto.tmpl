@@ -1,0 +1,10 @@
+mpackage dto
+
+type {{.Name | title}}DTO struct {
+	// Only include the fields that need to be transferred to/from the client
+	{{- range .Columns }}
+	{{ if not (eq .Name "id") }} // Skip the ID field if you don't need it in the DTO
+		{{ .Name | title }} {{ .Type }} `json:"{{ .Name }}"` 
+	{{ end }}
+	{{- end }}
+}
