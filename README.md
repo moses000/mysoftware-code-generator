@@ -1,6 +1,27 @@
 # CRUDGen - PostgreSQL CRUD API Generator
 
-**CRUDGen** is a CLI tool written in Go that generates boilerplate CRUD code (models, handlers, routes, services, and DTOs) from a PostgreSQL database table. Ideal for kickstarting API development, it simplifies and automates repetitive tasks.
+💬 Join the Community Discussion
+🚀 I am building code-generator to simplify CRUD code generation from PostgreSQL tables using Go — and I want your input! This is the start of the project, I will ensure to keep increasing it capability and functionality. 
+
+📣 Join the Discussion →
+
+📌 In the discussion, you can:
+Ask questions
+
+Share ideas & features you want
+
+Report bugs or edge cases
+
+Contribute templates or improvements
+
+Connect with fellow developers
+
+Let’s collaborate and make code-generator more powerful and flexible for everyone! 💡
+
+
+
+
+**Code-generator** is a CLI tool written in Go that generates boilerplate CRUD code (models, handlers, routes, services, and DTOs) from a PostgreSQL database table. Ideal for kickstarting API development, it simplifies and automates repetitive tasks.
 
 ## 🚀 Features
 
